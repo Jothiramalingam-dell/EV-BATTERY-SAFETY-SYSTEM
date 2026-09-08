@@ -1,4 +1,4 @@
-# EV Battery Active Moisture Mitigation & Multi-Tier Safety System
+# AI Based Moisture Detection and Safety Monitoring for Lithium-Ion Batteries
 
 An ESP32-based early hazard intervention architecture for electric vehicle battery packs, engineered to prevent condensation-induced short circuits and mitigate thermal runaway risks before propagation.
 
