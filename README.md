@@ -1,6 +1,6 @@
 # AI Based Moisture Detection and Safety Monitoring for Lithium-Ion Batteries
 
-An ESP32-based early hazard intervention architecture for electric vehicle battery packs, engineered to prevent condensation-induced short circuits and mitigate thermal runaway risks before propagation.
+An intelligent, edge-computing hazard intervention architecture for Li-ion battery enclosures, designed to predict condensation, identify pre-thermal runaway degassing, and execute multi-tier protective interlocks.
 
 ---
 
@@ -8,26 +8,26 @@ An ESP32-based early hazard intervention architecture for electric vehicle batte
 
 | Component | Function | Interface / Pin | Logic Level |
 | :--- | :--- | :--- | :--- |
-| **ESP32 NodeMCU** | Central Edge Controller | Master Unit | 3.3V / 5V VIN |
-| **DHT22** | Air Humidity & Ambient Temp | GPIO 15 (Digital) | 3.3V / 5V |
-| **DS18B20** | Cell Skin Surface Temperature | GPIO 4 (1-Wire Bus) | 3.3V |
-| **MQ-2** | Gas Degassing & Smoke Detection | GPIO 34 (ADC Analog) | 5V (VCC to VIN) |
-| **12V Relay (Fan)** | Moisture Exhaust Purge | GPIO 19 (Digital OUT) | 5V Coil |
+| **ESP32 NodeMCU** | Central Edge Processing Unit | Master Controller | 3.3V / 5V VIN |
+| **DHT22** | Enclosure RH% & Ambient Temperature | GPIO 15 (Digital) | 3.3V / 5V |
+| **DS18B20** | Direct Li-ion Cell Skin Temperature | GPIO 4 (1-Wire Bus) | 3.3V |
+| **MQ-2** | Electrolyte Degassing & Smoke Detection | GPIO 34 (ADC Analog) | 5V (VCC to VIN) |
+| **12V Relay (Fan)** | Active Moisture Purging Actuator | GPIO 19 (Digital OUT) | 5V Coil |
 | **Piezo Buzzer** | Acoustic Hazard Warning | GPIO 18 (Digital OUT) | 3.3V / 5V |
-| **16x2 LCD** | Diagnostic Telemetry Display | GPIO 21 (SDA), 22 (SCL)| I2C Bus (0x27) |
+| **16x2 LCD** | Real-Time Telemetry & State Display | GPIO 21 (SDA), 22 (SCL)| I2C Bus (0x27) |
 
 ---
 
-## ⚡ Multi-Tier Response Logic
+## ⚡ AI Predictive & Multi-Tier Safety Logic
 
-* **Normal Monitoring State:** Continually samples ambient dew-point indicators and cell skin temperature at 50ms intervals; displays real-time telemetry on the I2C LCD.
-* **Stage 1 (Moisture Condensation Purge):** If relative humidity exceeds 70% RH, Relay 1 activates the 12V exhaust fan to purge moist air and prevent dew formation on busbars.
-* **Stage 2 (Degassing & Thermal Interlock):** If MQ-2 detects volatile battery gases (H2/CO traces) or cell surface temperature crosses 50°C, the system trips the emergency relay to isolate the pack and sounds a continuous audio alarm via the piezo buzzer.
+* **Predictive Dew-Point & Condensation Estimation:** Uses edge regression logic based on ambient temperature and relative humidity to predict moisture accumulation before dew formation on Li-ion busbars.
+* **Stage 1 (Active Moisture Purge):** Automatically engages the 12V exhaust ventilation relay when humidity exceeds critical thresholds (70% RH) to eliminate condensation risks.
+* **Stage 2 (Degassing & Thermal Interlock):** Isolates the battery pack via relay trip and sounds a continuous audio alarm if MQ-2 detects venting electrolyte gases ($H_2/CO$) or cell temperature crosses 50°C.
 
 ---
 
 ## 🛠️ Firmware Specification
 * **Environment:** Embedded C++ (Arduino IDE / ESP-IDF)
-* **Key Libraries:** `DHT sensor library`, `DallasTemperature`, `OneWire`, `LiquidCrystal_I2C`
-* **Status:** Simulation verified on Wokwi; ready for benchtop hardware deployment.
-
+* **Libraries:** `DHT sensor library`, `DallasTemperature`, `OneWire`, `LiquidCrystal_I2C`
+* **Status:** Verified on Wokwi edge simulation; benchmarked for benchtop Li-ion test bench integration.
+*
