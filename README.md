@@ -30,4 +30,4 @@ An ESP32-based early hazard intervention architecture for electric vehicle batte
 * **Environment:** Embedded C++ (Arduino IDE / ESP-IDF)
 * **Key Libraries:** `DHT sensor library`, `DallasTemperature`, `OneWire`, `LiquidCrystal_I2C`
 * **Status:** Simulation verified on Wokwi; ready for benchtop hardware deployment.
-*
+
